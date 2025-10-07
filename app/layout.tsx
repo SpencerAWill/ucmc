@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
-import {
-  MdOutlineInventory2,
-  MdSecurity,
-  MdOutlineDashboard,
-  MdOutlineBackpack,
-  MdPeople,
-  MdShoppingCartCheckout, MdOutlinePerson, MdMenu
-} from "react-icons/md";
-import Image from "next/image";
-import {PiTent} from "react-icons/pi";
+import {ThemeProvider} from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,76 +23,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Header */}
-        <header className={'grid grid-cols-3 grid-rows-1 gap-x-4 p-3 sticky top-0'}>
-          <span className={'flex flex-row items-center justify-start'}>
-            <button>
-              <MdMenu className={'w-8 h-8'} />
-            </button>
-          </span>
-          <span className={'text-center'}>
-            <Link href="/">
-              <Image src={'/logo.png'} alt={'UCMC Logo'} className={'w-8 h-8 mx-auto'} width={32} height={32} />
-            </Link>
-          </span>
-          <span className={'flex flex-row-reverse items-center justify-start'}>
-            <button>
-              <MdOutlinePerson className={'w-8 h-8'} />
-            </button>
-          </span>
-        </header>
-
-        {/*/!* Sidebar *!/*/}
-        {/*<aside>*/}
-        {/*  <ol>*/}
-        {/*    <li>*/}
-        {/*      <Link href='/' className={'flex flex-row items-center justify-start gap-x-4'}>*/}
-        {/*        <MdOutlineDashboard />*/}
-        {/*        <span>My Dashboard</span>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*    <li>*/}
-        {/*      <Link href='/' className={'flex flex-row items-center justify-start gap-x-4'}>*/}
-        {/*        <PiTent />*/}
-        {/*        <span>Inventory</span>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*    <li>*/}
-        {/*      <Link href='/' className={'flex flex-row items-center justify-start gap-x-4'}>*/}
-        {/*        <MdPeople />*/}
-        {/*        <span>Users</span>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*    <li>*/}
-        {/*      <Link href='/' className={'flex flex-row items-center justify-start gap-x-4'}>*/}
-        {/*        <MdOutlineBackpack />*/}
-        {/*        <span>My Items</span>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*    <li>*/}
-        {/*      <Link href='/' className={'flex flex-row items-center justify-start gap-x-4'}>*/}
-        {/*        <MdShoppingCartCheckout />*/}
-        {/*        <span>Checkout</span>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*    <li>*/}
-        {/*      <Link href='/' className={'flex flex-row items-center justify-start gap-x-4'}>*/}
-        {/*        <MdSecurity />*/}
-        {/*        <span>Security</span>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*  </ol>*/}
-        {/*</aside>*/}
-
-        {/* Main Content */}
-        <main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
-        </main>
+        </ThemeProvider>
       </body>
     </html>
   );
