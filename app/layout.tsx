@@ -4,6 +4,7 @@ import "./globals.css";
 import {ThemeProvider} from "@/components/theme-provider";
 import { Sidebar, SidebarHeader, SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import Image from "next/image";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,24 +47,24 @@ export default function RootLayout({
             </Sidebar>
 
             <SidebarInset>
-              <header className="flex flex-row justify-between p-2 border-b">
+              <header className="grid grid-cols-3 p-2 border-b">
 
-                <span>
+                <span className="flex flex-row items-center justify-start gap-2">
                   <SidebarTrigger />
                 </span>
 
-                <span className="flex flex-row justify-start gap-2">
+                <span className="flex flex-row items-center justify-center gap-2">
                   <Image
                     src="/logo.png"
                     alt="Logo"
-                    width={30}
-                    height={30}
+                    width={32}
+                    height={32}
                   />
-                  <h1>UC Mountaineering</h1>
                 </span>
                 
-                <span className="flex flex-row-reverse justify-start gap-2">
+                <span className="flex flex-row-reverse items-center justify-start gap-2">
                   <span>Account</span>
+                  <ThemeToggle />
                 </span>
 
               </header>
