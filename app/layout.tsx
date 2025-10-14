@@ -47,7 +47,7 @@ export default function RootLayout({
             </Sidebar>
 
             <SidebarInset>
-              <header className="grid grid-cols-3 p-2 border-b">
+              <header className="grid grid-cols-3 grid-rows-1 p-2 border-b">
 
                 <span className="flex flex-row items-center justify-start gap-2">
                   <SidebarTrigger />
