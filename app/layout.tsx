@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {ThemeProvider} from "@/components/theme-provider";
+import { Sidebar, SidebarHeader, SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +37,39 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SidebarProvider>
+            
+            <Sidebar side="left" variant="sidebar" collapsible="icon">
+              <SidebarHeader>
+                
+              </SidebarHeader>
+            </Sidebar>
+
+            <SidebarInset>
+              <header className="flex flex-row justify-between p-2 border-b">
+
+                <span>
+                  <SidebarTrigger />
+                </span>
+
+                <span className="flex flex-row justify-start gap-2">
+                  <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    width={30}
+                    height={30}
+                  />
+                  <h1>UC Mountaineering</h1>
+                </span>
+                
+                <span className="flex flex-row-reverse justify-start gap-2">
+                  <span>Account</span>
+                </span>
+
+              </header>
+              {children}
+            </SidebarInset>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
