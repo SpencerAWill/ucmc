@@ -24,6 +24,11 @@
             "plugins" : [
               "com.github.copilot"
             ],
+        },
+        "vscode": {
+            "extensions": [
+                "bradlc.vscode-tailwindcss"
+            ]
         }
     },
 
